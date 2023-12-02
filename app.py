@@ -79,7 +79,7 @@ def create_app():
             count=d1.groupby(col).size()
             #print(type(count))
             d2=pd.DataFrame(count)
-            plot=d2.plot.pie(y=0, figsize=(5,5),autopct='%1.1f%%')
+            plot=d2.plot.pie(y=0, figsize=(10,10),autopct='%1.1f%%')
             plt.title("Pie Chart to show whether team won by winning toss or not")
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
@@ -88,6 +88,7 @@ def create_app():
         @app.route('/most_player_of_the_match',methods=['GET'])
         def most_player_of_the_match():
             # dt=df.dropna()
+            plt.figure(figsize=(12, 10))
             sns.countplot(y='player_of_match',data=df)
             buf=io.BytesIO()
             plt.savefig(buf,format='png')
@@ -105,7 +106,7 @@ def create_app():
             count=d1.groupby(col).size()
             d2=pd.DataFrame(count)
 
-            plot=d2.plot.pie(y=0, figsize=(5,5),autopct='%1.1f%%')
+            plot=d2.plot.pie(y=0, figsize=(10,10),autopct='%1.1f%%')
             plt.title("Pie Chart to show whether team won by 1st Batting or 2nd Batting")
             buf=io.BytesIO()
             plt.savefig(buf,format='png')
@@ -115,7 +116,7 @@ def create_app():
             # plt.savefig("D:\T20 World Cup\Plots/Fig.png")
         @app.route('/top_scorer', methods=['GET'])
         def top_scorer():
-            
+            plt.figure(figsize=(14, 14))
             # dt=df.dropna()
             sns.barplot(x='top_scorer',y='highest_score',data=df)
             plt.xticks(rotation = 'vertical')
